@@ -19,14 +19,6 @@ def get_accepted_words(word):
                 accepted_words.append(accepted_word)
     return accepted_words
 
-def generate_word_combinations(word):
-    """ This will generated a list of Combination based on the given string """
-    list_of_words = []
-    for word_length in range (1, len(word)+1):
-        for generated_word in permutations(word, word_length):
-            list_of_words.append("".join(generated_word))
-    return list_of_words
-
 
 def parse_argument():
     parser = argparse.ArgumentParser()
