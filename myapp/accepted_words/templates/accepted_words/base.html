@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title> My App </title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+        <link rel="stylesheet" href="{% static 'css/myapp.css' %}">
+    </head>
+
+    <body>
+        <div class="page-header">
+            <h1><a href="/">My App</a></h1>
+             {% if user.is_authenticated %}
+                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+             {% else %} 
+                 <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                 <a href="{% url 'register' %}" class="top-menu"><span class="glyphicon glyphicon-registration-mark"></span></a>
+             {% endif %}
+         </div>
+         <div class "content container">
+                 {% block content %}
+                 {% endblock %}
+         </div>
+    </body>
+</html>

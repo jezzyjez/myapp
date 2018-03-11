@@ -1,0 +1,18 @@
+{% extends 'accepted_words/base.html' %}
+
+{% block content %}
+    <h1> Enter your word </h1>
+    <form method="POST" > {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit btn btn-default"> Submit </button>
+    <form>
+    <p> Generated Words </p>
+    {% if accepted_word %}
+        <ol>
+        {% for word in accepted_word %}
+            <li> {{ word }} </li>
+        {% endfor %}
+
+        </ol>
+    {% endif %}
+{% endblock %}
