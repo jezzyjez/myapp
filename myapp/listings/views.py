@@ -69,7 +69,7 @@ def book_list(request):
     else:
         form = FilterSearchForm()
         listings = BookList.objects.all()
-    return render(request, 'listings/song_list.html', {'form': form, 'listings' : listings}) 
+    return render(request, 'listings/book_list.html', {'form': form, 'listings' : listings}) 
 
 
 @login_required
