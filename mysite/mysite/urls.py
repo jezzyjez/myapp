@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.contrib.auth import views
 
 urlpatterns = [
     path('pollss/', include('polls.url')),
     re_path(r'', include('blog.urls')),
+    re_path(r'^accounts/login', views.login, name='login'),
+    re_path(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     path('admin/', admin.site.urls),
 ]

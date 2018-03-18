@@ -9,15 +9,25 @@
     </head>
 
     <body>
-        <div class="page-header">
-            <h1><a href="/">My App</a></h1>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid page-header">
+            <div class="navbar-header">
+                <h1><a href="/">My App</a></h1>
+            </div>
              {% if user.is_authenticated %}
+                <ul class="nav navbar-nav nav-padding">
+                    <li><a href="{% url 'movie_list' %}">Movies</a></li>
+                    <li><a href="{% url 'song_list' %}">Songs</a></li>
+                    <li><a href="{% url 'book_list' %}">Book</a></li>
+                </ul>
                 <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+
              {% else %} 
                  <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                  <a href="{% url 'register' %}" class="top-menu"><span class="glyphicon glyphicon-registration-mark"></span></a>
              {% endif %}
          </div>
+        </nav>
          <div class "content container">
                  {% block content %}
                  {% endblock %}

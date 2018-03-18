@@ -1,0 +1,33 @@
+{% extends 'accepted_words/base.html' %}
+
+{% block content %}
+    <h1> <p class="text-center"> Song List </p> </h1>
+    <div class=container-fluid">
+        <div class="row row-eq-height">
+            <div class="col-sm-4 col-md-offset-2"> 
+                    <form method="POST" class"post-form"> {% csrf_token %}
+                {{ form.as_table }}
+            </div>
+            <div class="col-sm-2">
+                <button type="search" class="save btn btn-default">Search</button>
+            </div>
+        </div>
+        <div class="row row-eq-height">
+            <div class="col-sm-2 col-md-offset-2 col-border"> Title </div>
+            <div class="col-sm-2 col-border"> Released Date </div>
+            <div class="col-sm-2 col-border"> Genre </div>
+            <div class="col-sm-2 btn-padding" > <a class="btn btn-default btn-sm" href="{% url 'add_data' list_type='song' %}"><span class="glyphicon glyphicon-plus"></span></a> </div>
+        </div>
+        {% for list in listings %}
+            <div class="row row-eq-height">
+                <div class="col-sm-2 col-md-offset-2 col-border"> {{ list.song }}</div>
+                <div class="col-sm-2  col-border"> {{ list.release_date }} </div>
+                <div class="col-sm-2  col-border"> {{ list.genre}} </div>
+                <div class="col-sm-2 btn-padding"> 
+                        <a class="btn btn-default btn-sm"  href="{% url 'edit_data' list_type='song' pk=list.pk %}"> edit  </a>
+                        <a class="btn btn-default btn-sm"  href="{% url 'remove' list_type='song' pk=list.pk %}"> remove  </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -35,6 +35,7 @@ LOGIN_REDIRECT_URL = '/'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'accepted_words',
+    'listings',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
